@@ -91,7 +91,7 @@ public class ParkingSpotController {
 
     @PreAuthorize("hasRole('PARKING_UPDATE')")
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateParkingSpot(@PathVariable(value = "id") UUID id, ParkingSpotDto parkingSpotDto){
+    public ResponseEntity<Object> updateParkingSpot(@PathVariable(value = "id") UUID id, @RequestBody @Valid ParkingSpotDto parkingSpotDto){
         Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
         
         if(!parkingSpotModelOptional.isPresent()){
